@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.accp.biz.PaimaiUserBiz;
 import com.accp.biz.StudentBiz;
 import com.accp.dao.IPersonDao;
 import com.accp.dao.StudentDao;
@@ -33,6 +34,10 @@ public class Springboot5ApplicationTests {
 	
 	@Autowired
 	private StudentBiz sbiz;
+	
+	
+	@Autowired
+	private PaimaiUserBiz ubiz;
 	
 	@Test
 	public void text() {
@@ -59,9 +64,11 @@ public class Springboot5ApplicationTests {
 //		String time=ltime.toString();
 //		System.out.println(time);
 		
-		sbiz.selectListBydate().forEach(temp->{
-			System.out.println(temp);
-		});
+//		sbiz.selectListBydate().forEach(temp->{
+//			System.out.println(temp);
+//		});
+//	}
+		ubiz.updatebyphone("1234567", "1234567891");
 	}
 	@Test
 	public void contextLoads() {
