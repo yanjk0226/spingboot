@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.PaimaiuserDAO">
+  <resultMap id="BaseResultMap" type="com.accp.pojo.Paimaiuser">
+    <id column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="userpwd" jdbcType="VARCHAR" property="userpwd" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="userdate" jdbcType="TIMESTAMP" property="userdate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    userid, username, userpwd, phone, ID, address, code, userdate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from paimaiuser
+    where userid = #{userid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from paimaiuser
+    where userid = #{userid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="userid" keyProperty="userid" parameterType="com.accp.pojo.Paimaiuser" useGeneratedKeys="true">
+    insert into paimaiuser (username, userpwd, phone, 
+      ID, address, code, 
+      userdate)
+    values (#{username,jdbcType=VARCHAR}, #{userpwd,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{id,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{userdate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="userid" keyProperty="userid" parameterType="com.accp.pojo.Paimaiuser" useGeneratedKeys="true">
+    insert into paimaiuser
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        username,
+      </if>
+      <if test="userpwd != null">
+        userpwd,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="userdate != null">
+        userdate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwd != null">
+        #{userpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="userdate != null">
+        #{userdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.Paimaiuser">
+    update paimaiuser
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwd != null">
+        userpwd = #{userpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null">
+        ID = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="userdate != null">
+        userdate = #{userdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where userid = #{userid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.Paimaiuser">
+    update paimaiuser
+    set username = #{username,jdbcType=VARCHAR},
+      userpwd = #{userpwd,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      ID = #{id,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      userdate = #{userdate,jdbcType=TIMESTAMP}
+    where userid = #{userid,jdbcType=INTEGER}
+  </update>
+</mapper>
