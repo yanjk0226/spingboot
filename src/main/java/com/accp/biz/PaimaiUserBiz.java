@@ -33,8 +33,8 @@ public class PaimaiUserBiz {
 	 * 新增 传个对象过来 (注册)
 	 * */
 	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
-	public void add(Paimaiuser user) {
-		dao.insert(user);
+	public int add(Paimaiuser user) {
+		return dao.insert(user);
 		
 	}
 	/**
@@ -43,12 +43,17 @@ public class PaimaiUserBiz {
 	public Paimaiuser selectByid(Integer id) {
 		return dao.selectById(id);
 	}
+	/**
+	 * 根据 phone 查询
+	 * **/
+	public Paimaiuser selectByphone(String phone) {
+		return dao.selectByphone(phone);
+	}
     /**
         * 根据手机号修改密码
      * */
-	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
 	public void updatebyphone(String pwd,String phone) {
-		dao.updatebyphone(pwd, phone);
+		 dao.updatebyphone(pwd, phone);
 	}
 	/**
 	 * 

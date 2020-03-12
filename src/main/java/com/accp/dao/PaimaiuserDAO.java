@@ -9,5 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 public interface PaimaiuserDAO extends BaseMapper<Paimaiuser> {
 	
 	@Select("UPDATE paimaiuser set userpwd=#{pwd} where phone=#{phone}")
-	Paimaiuser updatebyphone(@Param("pwd") String pwd,@Param("phone") String phone);
+	void updatebyphone(@Param("pwd") String pwd,@Param("phone") String phone);
+	@Select("select * from paimaiuser  where phone=#{phone}")
+	Paimaiuser selectByphone(@Param("phone") String phone);
 }
