@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.accp.biz.PaimaiUserBiz;
+import com.accp.biz.PaimaicommodityBiz;
 import com.accp.biz.StudentBiz;
+import com.accp.biz.paimaiJpBiz;
 import com.accp.dao.IPersonDao;
 import com.accp.dao.StudentDao;
 import com.accp.pojo.Person;
@@ -39,8 +41,15 @@ public class Springboot5ApplicationTests {
 	@Autowired
 	private PaimaiUserBiz ubiz;
 	
+	@Autowired
+	private PaimaicommodityBiz cbiz;
+	@Autowired
+	private paimaiJpBiz jbiz;
+	
 	@Test
 	public void text() {
+//		System.out.println(jbiz.chajl(1));
+//		System.out.println(cbiz.selectOrderPageinfo(1, 1, "唐","好","2020-1-1","2020-5-9","1000000000"));
 		//sdao.insert(new Student("xjj", "123456","男", new Date()));
 //		PageHelper.startPage(1,1);
 //		List<Student> data=sdao.selectList(null);
@@ -68,7 +77,7 @@ public class Springboot5ApplicationTests {
 //			System.out.println(temp);
 //		});
 //	}
-		ubiz.updatebyphone("1234567", "1234567891");
+//		ubiz.updatebyphone("1234567", "1234567891");
 	}
 	@Test
 	public void contextLoads() {
@@ -97,20 +106,20 @@ public class Springboot5ApplicationTests {
 //			System.out.println(temp);
 //		});
 		//登陆
-		QueryWrapper<Person> qw=Wrappers.query();
-		qw.eq("name", "admin").eq("pwd", "123");
+//		QueryWrapper<Person> qw=Wrappers.query();
+//		qw.eq("name", "admin").eq("pwd", "123");
 //		int count=dao.selectCount(qw);
 //		if(count!=0) {
 //			System.out.println("登陆成功");
 //		}else {
 //			System.out.println("登陆失败");
 //		}
-		Person person=dao.selectOne(qw);
-		if(person!=null) {
-			System.out.println("登陆成功");
-		}else {
-			System.out.println("登陆失败");
-		}
+//		Person person=dao.selectOne(qw);
+//		if(person!=null) {
+//			System.out.println("登陆成功");
+//		}else {
+//			System.out.println("登陆失败");
+//		}
 		
 	}
 

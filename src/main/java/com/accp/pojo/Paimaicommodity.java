@@ -3,11 +3,18 @@ package com.accp.pojo;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 /**
  * paimaicommodity
  * @author 
  */
+@TableName("paimaicommodity")
 public class Paimaicommodity implements Serializable {
+	@TableId(value = "pcid",type = IdType.AUTO)
     private Integer pcid;
 
     private String pcname;
@@ -15,12 +22,11 @@ public class Paimaicommodity implements Serializable {
     private Integer pcfloorprice;
 
     private Integer pcstartingprice;
-
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date startdate;
-
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date stopdate;
-
-    private String describe;
+    private String describetext;
 
     private String pcimg;
 
@@ -74,12 +80,12 @@ public class Paimaicommodity implements Serializable {
         this.stopdate = stopdate;
     }
 
-    public String getDescribe() {
-        return describe;
+    public String getDdescribetext() {
+        return describetext;
     }
 
-    public void setDescribe(String describe) {
-        this.describe = describe;
+    public void setDescribetext(String describetext) {
+        this.describetext = describetext;
     }
 
     public String getPcimg() {
@@ -108,7 +114,7 @@ public class Paimaicommodity implements Serializable {
             && (this.getPcstartingprice() == null ? other.getPcstartingprice() == null : this.getPcstartingprice().equals(other.getPcstartingprice()))
             && (this.getStartdate() == null ? other.getStartdate() == null : this.getStartdate().equals(other.getStartdate()))
             && (this.getStopdate() == null ? other.getStopdate() == null : this.getStopdate().equals(other.getStopdate()))
-            && (this.getDescribe() == null ? other.getDescribe() == null : this.getDescribe().equals(other.getDescribe()))
+            && (this.getDdescribetext() == null ? other.getDdescribetext() == null : this.getDdescribetext().equals(other.getDdescribetext()))
             && (this.getPcimg() == null ? other.getPcimg() == null : this.getPcimg().equals(other.getPcimg()));
     }
 
@@ -122,7 +128,7 @@ public class Paimaicommodity implements Serializable {
         result = prime * result + ((getPcstartingprice() == null) ? 0 : getPcstartingprice().hashCode());
         result = prime * result + ((getStartdate() == null) ? 0 : getStartdate().hashCode());
         result = prime * result + ((getStopdate() == null) ? 0 : getStopdate().hashCode());
-        result = prime * result + ((getDescribe() == null) ? 0 : getDescribe().hashCode());
+        result = prime * result + ((getDdescribetext() == null) ? 0 : getDdescribetext().hashCode());
         result = prime * result + ((getPcimg() == null) ? 0 : getPcimg().hashCode());
         return result;
     }
@@ -139,10 +145,40 @@ public class Paimaicommodity implements Serializable {
         sb.append(", pcstartingprice=").append(pcstartingprice);
         sb.append(", startdate=").append(startdate);
         sb.append(", stopdate=").append(stopdate);
-        sb.append(", describe=").append(describe);
+        sb.append(", describetext=").append(describetext);
         sb.append(", pcimg=").append(pcimg);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
     }
+
+	public Paimaicommodity(Integer pcid, String pcname, Integer pcfloorprice, Integer pcstartingprice, Date startdate,
+			Date stopdate, String describetext, String pcimg) {
+		super();
+		this.pcid = pcid;
+		this.pcname = pcname;
+		this.pcfloorprice = pcfloorprice;
+		this.pcstartingprice = pcstartingprice;
+		this.startdate = startdate;
+		this.stopdate = stopdate;
+		this.describetext = describetext;
+		this.pcimg = pcimg;
+	}
+
+	public Paimaicommodity(String pcname, Integer pcfloorprice, Integer pcstartingprice, Date startdate, Date stopdate,
+			String describetext, String pcimg) {
+		super();
+		this.pcname = pcname;
+		this.pcfloorprice = pcfloorprice;
+		this.pcstartingprice = pcstartingprice;
+		this.startdate = startdate;
+		this.stopdate = stopdate;
+		this.describetext = describetext;
+		this.pcimg = pcimg;
+	}
+
+	public Paimaicommodity() {
+		super();
+	}
+    
 }

@@ -23,10 +23,17 @@ public class PaimaicommodityBiz {
 	/**
 	 * 查询分页 （所有） 追加条件 （对象）
 	 * */
-	public PageInfo<Paimaicommodity> selectOrderPageinfo(Integer pageNum, Integer pageSize,Paimaicommodity pm){
-		PageHelper.startPage(pageNum, pageSize);
+	public PageInfo<Paimaicommodity> selectOrderPageinfo(int n,int s, String pmpname, String pmpms,String pmpkssj, String pmpjssj,String pmpqpj) {
 		QueryWrapper<Paimaicommodity> qw=Wrappers.query();
-		//qw.like("pcname", pm.getPcname()).like("describe", pm.getDescribe()).eq("pcstartingprice",pm.getPcstartingprice()).eq("startdate",pm.getStartdate()).eq("stopdate",pm.getStopdate());
+		if(!pmpname.equals("null")) {qw.like("pcname", pmpname);};
+		if(!pmpms.equals("null")) {qw.like("describetext",pmpms);};
+		if(!pmpkssj.equals("null")) {qw.ge("startdate", pmpkssj);};
+		if(!pmpjssj.equals("null")) {qw.le("stopdate",pmpjssj);};
+		if(!pmpqpj.equals("null")) {qw.between("pcfloorprice",(Integer.parseInt(pmpqpj)-1000),(Integer.parseInt(pmpqpj)+1000));};
+		PageHelper.startPage(n, s);
 		return new PageInfo<Paimaicommodity>(dao.selectList(qw));
+	}
+	public Paimaicommodity jingpai(int id) {
+		return dao.selectById(id);
 	}
 }

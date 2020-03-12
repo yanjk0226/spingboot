@@ -52,6 +52,7 @@ public class PaimaiUserBiz {
     /**
         * 根据手机号修改密码
      * */
+	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
 	public void updatebyphone(String pwd,String phone) {
 		 dao.updatebyphone(pwd, phone);
 	}
