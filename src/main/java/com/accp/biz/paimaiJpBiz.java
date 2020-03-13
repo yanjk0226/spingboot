@@ -30,6 +30,12 @@ public class paimaiJpBiz {
 		PageHelper.startPage(1, 3);
 		return new PageInfo<Paimaijp>(dao.selectList(qw));
 	}
+	public PageInfo<Paimaijp> cha(int pcid) {
+		QueryWrapper<Paimaijp> qw=Wrappers.query();
+		qw.eq("pcid", pcid).orderByDesc("jpprice");
+		PageHelper.startPage(1,1);
+		return new PageInfo<Paimaijp>(dao.selectList(qw));
+	}
 	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
 	public int add(Paimaijp jp) {
 		return dao.insert(jp);
